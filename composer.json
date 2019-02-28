@@ -1,0 +1,11 @@
+{
+    "name": "smallearth/price-image",
+    "description": "价格价格图片方案",
+    "authors": [
+        {
+            "name": "smallearth",
+            "email": "smallearth2012@gmail.com"
+        }
+    ],
+    "require": {}
+}
