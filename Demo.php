@@ -56,13 +56,15 @@ $price->setFontCommonBold($fontCommonBold);
 /**
  * 设置价格
  */
-for ($i = 0; $i < 10 ; $i++) {
-    $position = $price->addPrice(rand(10000,99999), rand(1, 10), "元/月", "元/平/日");
+for ($i = 0; $i < 10; $i++) {
+    $position = $price->addPrice(rand(10000, 99999), rand(1, 10), "元/月", "元/平/日");
 }
 /**
  * 获取图片
  */
-$image = $price->getPriceImg();
+
+$positions = $price->getPosition();
+$image     = $price->getPriceImg();
 
 /**
  * 输出
