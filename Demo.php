@@ -32,7 +32,7 @@ $price->setTemplate(Price::$TEMPLATE_PC_LIST);
 /**
  * 设置图片宽度
  */
-$price->setImgWidth(1000);
+//$price->setImgWidth(1000);
 /**
  * 设置图片高度
  */
@@ -54,14 +54,10 @@ $price->setFontCommon($fontCommon);
 $price->setFontCommonBold($fontCommonBold);
 
 /**
- * 价格数据示例
- */
-$prices = [[10000, 10], [2222, 10], [22232, 7.8]];
-/**
  * 设置价格
  */
-foreach ($prices as $item) {
-    $position = $price->addPrice($item[0], $item[1], "元/月", "元/平/日");
+for ($i = 0; $i < 10 ; $i++) {
+    $position = $price->addPrice(rand(10000,99999), rand(1, 10), "元/月", "元/平/日");
 }
 /**
  * 获取图片
