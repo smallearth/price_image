@@ -1,35 +1,26 @@
 <?php
-
-//namespace Price\src;
-
 /**
- * 价格图片逻辑.
- *
- * 使用示例--添加图片数据
- * $mPrice = new PriceModel();
- * $mPrice->setTemplate(PriceModel::$TEMPLATE_DETAIL);
- * $mPrice->setImgWidth(880);
- * $mPrice->setImgHeight(140);
- * $mPrice->setPriceFontSize(72);
- * $mPrice->setCommonFontSize(20);
- * $mPrice->setPriceText("万元");
- * $mPrice->setUnitPriceText("元/平");
- * $mPrice->addPrice(10000, 10);
- * $token = $mPrice->getToken();
- * 使用示例--获取图片
- * $mPrice->getPriceImg($token);
- *
- * User: Jack
- * Date: 2018/4/19
- * Time: 下午4:32
+ * 房源列表页价格防爬方案
+ * @desc 将价格写在图片上，并返回详细坐标，前端可根据坐标读取价格，然后渲染在页面上
  */
+
+namespace Price;
+
 class Price
 {
+    /**
+     * 模板定义
+     * @var int
+     */
     public static $TEMPLATE_PC_LIST = 1;
     public static $TEMPLATE_PC_DETAIL = 2;
     public static $TEMPLATE_M_LIST = 3;
     public static $TEMPLATE_M_DETAIL = 4;
 
+    /**
+     * 模板
+     * @var
+     */
     private $_template;
 
     /**
@@ -56,16 +47,53 @@ class Price
      */
     private $_fontCommonBold;
 
+    /**
+     * 价格字体大小
+     * @var
+     */
     private $_priceFontSize;
+
+    /**
+     * 普通价格大体大小
+     * @var
+     */
     private $_commonFontSize;
+
+    /**
+     * 图片宽度
+     * @var int
+     */
     private $_imgWidth = 0;
+
+    /**
+     * 图片高度
+     * @var int
+     */
     private $_imgHeight = 0;
+
+    /**
+     * 价格数据
+     * @var array
+     */
     private $_price = [];
+
+    /**
+     * 图片边缘边距
+     * @var int
+     */
     private $_padding = 10;
     private $_angle = 0;
 
+    /**
+     * 坐标
+     * @var
+     */
     private $_position;
 
+    /**
+     * 返回价格图片
+     * @return null|resource
+     */
     public function getPriceImg()
     {
         $image = null;
@@ -87,6 +115,16 @@ class Price
         return $image;
     }
 
+    /**
+     * 设置价格
+     *
+     * @param        $price
+     * @param        $unitPrice
+     * @param string $priceText
+     * @param string $unitPriceText
+     *
+     * @return array|null
+     */
     public function addPrice($price, $unitPrice, $priceText = "", $unitPriceText = "")
     {
         $position = null;
